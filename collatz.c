@@ -1,5 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
+#include <limits.h>
+#include <stdlib.h>
 
 
 int32_t even(int32_t n) {
@@ -15,6 +17,10 @@ int32_t odd(int32_t n) {
 }
 
 int32_t step(int32_t n) {
+	if (n > ((INT_MAX-1) / 3)) {
+		fprintf(stderr, "integer overflow at %d\n", n);
+		exit(2);
+	}
 	if ((n & 1) == 1) {
 		return odd(n);
 	}
@@ -22,9 +28,10 @@ int32_t step(int32_t n) {
 }
 
 int32_t collatz(int32_t n) {
-	while (n>1) {
+	int64_t count;
+	for (count=0; n>1; ++count) {
 		n = step(n);
-		printf("%d\n", n);
+		// printf("%d\n", n);
 	}
-	return n;
+	return count;
 }
