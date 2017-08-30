@@ -17,7 +17,6 @@ int main(int argc, char **argv) {
 	}
 
 	n = atoi(argv[1]);
-
 	result = 0;
 	for (int i=n; i>=1; --i) {
 		tmp = collatz(i);

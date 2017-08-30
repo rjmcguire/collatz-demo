@@ -3,6 +3,8 @@
 #include <limits.h>
 #include <stdlib.h>
 
+int cache[1*1024*1024*1024];
+
 
 int32_t even(int32_t n) {
 	// printf("even %d\n", n);
@@ -28,10 +30,18 @@ int32_t step(int32_t n) {
 }
 
 int32_t collatz(int32_t n) {
+	int32_t num = n;
 	int64_t count;
 	for (count=0; n>1; ++count) {
+		if (cache[n] != 0) {
+			// printf("hit\n");
+			return count + cache[n];
+		}
 		n = step(n);
+
 		// printf("%d\n", n);
 	}
+	// printf("cache %d\n", num);
+	cache[num] = count;
 	return count;
 }
