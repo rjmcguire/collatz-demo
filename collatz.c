@@ -28,16 +28,16 @@ int32_t step(int32_t n) {
 	return even(n);
 }
 
-int32_t collatz(int32_t n, struct CacheEntry cache[]) {
+int32_t collatz(int32_t n, int cache_keys[], int cache_values[]) {
 	int64_t count;
 	for (count=0; n>1; ++count) {
 		for (int i=0; i<MAX_CACHE; i++) {
-			if (cache[i].number == 0) {
+			if (cache_keys[i] == 0) {
 				break;
 			}
-			if (cache[i].number == n) {
+			if (cache_keys[i] == n) {
 				// printf("cache entry, number:%d length:%d\n", cache[i].number, cache[i].length);
-				return count + cache[i].length;
+				return count + cache_values[i];
 			}
 		}
 		n = step(n);
