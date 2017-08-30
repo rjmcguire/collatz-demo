@@ -36,11 +36,11 @@ int main(int argc, char **argv) {
 	for (int i=0; i<MAX_THREADS; i++) {
 		results[i].lower = (work_set_size * i)+1;
 		results[i].upper   = (work_set_size * (i+1));
-		printf("%d vs %d\n", results[i].upper, n);
+		// printf("%d vs %d\n", results[i].upper, n);
 		if (results[i].upper > n) {
 			results[i].upper = n;
 		}
-		printf("work upper:%d lower:%d\n", results[i].upper, results[i].lower);
+		// printf("work upper:%d lower:%d\n", results[i].upper, results[i].lower);
 
 		// results[i] = main1(upper, lower);
 		if(pthread_create(&workers[i], NULL, thread_main, &results[i])) {
@@ -97,7 +97,7 @@ struct CacheEntry main1(int start, int end) {
 			cacheIndex = 0;
 		}
 	}
-	printf("result %d, count %lld\n", result, longestChain);
+	// printf("result %d, count %lld\n", result, longestChain);
 
 	free(cache);
 
