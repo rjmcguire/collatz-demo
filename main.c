@@ -6,10 +6,10 @@
 
 
 int main(int argc, char **argv) {
-	int n;
-	int64_t tmp;
-	int64_t longestChain;
-	int result;
+	uint64_t n;
+	uint64_t tmp;
+	uint64_t longestChain;
+	uint64_t result;
 
 	if (argc != 2) {
 		printf("Usage: %s [int]\n", argv[0]);
@@ -18,13 +18,13 @@ int main(int argc, char **argv) {
 
 	n = atoi(argv[1]);
 	result = 0;
-	for (int i=n; i>=1; --i) {
+	for (uint64_t i=n; i>=1; --i) {
 		tmp = collatz(i);
 		if (tmp > longestChain) {
 			result = i;
 			longestChain = tmp;
 		}
 	}
-	printf("result %d, count %lld\n", result, longestChain);
+	printf("result %lld, count %lld\n", result, longestChain);
   return 0;
 }

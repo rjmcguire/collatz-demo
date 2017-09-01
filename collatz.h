@@ -1,3 +1,3 @@
 #include <stdint.h>
 
-int32_t collatz(int32_t n);
+int64_t collatz(int64_t n);
