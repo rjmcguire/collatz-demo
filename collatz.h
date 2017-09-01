@@ -2,4 +2,4 @@
 
 #include "cache.h"
 
-int32_t collatz(int32_t n, struct CacheEntry cache[]);
+uint64_t collatz(uint64_t n, struct CacheEntry cache[]);

@@ -6,8 +6,8 @@
 #define MAX_CACHE 1024 * 1024
 
 struct CacheEntry {
-	int number;
-	int length;
+	uint64_t number;
+	uint64_t length;
 };
 
 #endif
